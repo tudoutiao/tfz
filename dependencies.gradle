@@ -1,0 +1,9 @@
+ext.versions = [
+        coroutines_version: '1.4.2',
+        work_version      : '2.5.0',
+]
+
+ext.libraries = [
+        coroutines : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.coroutines_version",
+        workmanager: "androidx.work:work-runtime-ktx:$versions.work_version",
+]
