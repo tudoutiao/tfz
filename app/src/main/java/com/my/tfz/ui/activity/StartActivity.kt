@@ -22,5 +22,6 @@ class StartActivity : AppCompatActivity() {
             overridePendingTransition(R.anim.alpha_in, R.anim.alpha_out)
         }, 1000)
 
+
     }
 }

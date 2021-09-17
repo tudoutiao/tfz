@@ -2,5 +2,7 @@
 <resources>
     <declare-styleable name="title_view_style">
         <attr name="content" format="reference" />
+        <attr name="leftImg" format="reference" />
+        <attr name="rightImg" format="reference" />
     </declare-styleable>
 </resources>
