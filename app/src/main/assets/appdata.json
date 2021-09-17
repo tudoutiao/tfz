@@ -1,0 +1,47 @@
+[
+  {
+    "name": "销售",
+    "msgCount": 0,
+    "icon": ""
+  },
+  {
+    "name": "工单",
+    "msgCount": 5,
+    "icon": ""
+  },
+  {
+    "name": "人事",
+    "msgCount": 0,
+    "icon": ""
+  },
+  {
+    "name": "知识",
+    "msgCount": 0,
+    "icon": ""
+  },
+  {
+    "name": "审批",
+    "msgCount": 0,
+    "icon": ""
+  },
+  {
+    "name": "反馈",
+    "msgCount": 0,
+    "icon": ""
+  },
+  {
+    "name": "公告",
+    "msgCount": 234,
+    "icon": ""
+  },
+  {
+    "name": "会议",
+    "msgCount": 0,
+    "icon": ""
+  },
+  {
+    "name": "售后",
+    "msgCount": 0,
+    "icon": ""
+  }
+]
