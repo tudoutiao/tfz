@@ -12,7 +12,7 @@ import java.io.InputStream;
 import java.util.List;
 
 public class DataUtil {
-    public List<AppItemInfo> getInfoList() {
+    public static List<AppItemInfo> getInfoList() {
         String reuslt = "";
         try {
             InputStream inputStream = MainApplication.context.getResources().getAssets().open("appdata.json");
