@@ -7,18 +7,18 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.my.tfz.R
-import com.my.tfz.bean.AppItemInfo
-import com.my.tfz.databinding.ItemAppLayoutBinding
+import com.my.tfz.bean.MessageBean
+import com.my.tfz.databinding.ItemMessageLayoutBinding
 
-class HomeAppAdapter :
-    ListAdapter<AppItemInfo, HomeAppAdapter.ViewHolder>(
+class MessageAppAdapter :
+    ListAdapter<MessageBean, MessageAppAdapter.ViewHolder>(
         GardenPlantDiffCallback()
     ) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
             DataBindingUtil.inflate(
                 LayoutInflater.from(parent.context),
-                R.layout.item_app_layout,
+                R.layout.item_message_layout,
                 parent,
                 false
             )
@@ -29,42 +29,37 @@ class HomeAppAdapter :
         holder.bind(getItem(position))
     }
 
-    class ViewHolder(private val binding: ItemAppLayoutBinding) :
+    class ViewHolder(private val binding: ItemMessageLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
         init {
-            binding.setClickListener {
 
-            }
         }
 
-        fun bind(info: AppItemInfo) {
+        fun bind(info: MessageBean) {
             with(binding) {
-                appInfo = info
-                image.setImageResource(info.icon!!)
+                msgBean = info
+
                 executePendingBindings()
             }
         }
     }
 
-    class GardenPlantDiffCallback : DiffUtil.ItemCallback<AppItemInfo>() {
+    class GardenPlantDiffCallback : DiffUtil.ItemCallback<MessageBean>() {
 
         override fun areItemsTheSame(
-            oldItem: AppItemInfo,
-            newItem: AppItemInfo
+            oldItem: MessageBean,
+            newItem: MessageBean
         ): Boolean {
             return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(
-            oldItem: AppItemInfo,
-            newItem: AppItemInfo
+            oldItem: MessageBean,
+            newItem: MessageBean
         ): Boolean {
             return oldItem.name == newItem.name
         }
     }
 
 }
-
-
-
 

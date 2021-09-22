@@ -20,9 +20,9 @@
     <EditText
         android:id="@+id/edit_view"
         android:layout_width="match_parent"
-        android:layout_height="43dp"
+        android:layout_height="38dp"
         android:layout_margin="10dp"
-        android:background="@drawable/bg_corner_white"
+        android:background="@drawable/bg_corner_white_8"
         android:drawableLeft="@drawable/ic_search"
         android:drawablePadding="5dp"
         android:hint="@string/search"
@@ -34,8 +34,11 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_corner_white_4"
         android:scrollbars="none"
-        app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
-        app:layout_constraintTop_toBottomOf="@+id/edit_view"></androidx.recyclerview.widget.RecyclerView>
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/edit_view"
+        app:layout_constraintTop_toBottomOf="@+id/edit_view"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"></androidx.recyclerview.widget.RecyclerView>
 </androidx.constraintlayout.widget.ConstraintLayout>

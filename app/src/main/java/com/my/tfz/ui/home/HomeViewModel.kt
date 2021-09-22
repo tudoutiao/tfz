@@ -20,7 +20,6 @@ class HomeViewModel : ViewModel() {
 
     init {
         viewModelScope.launch {
-
             var dataList = DataUtil().getInfoList()
             var index = 0
             dataList?.map {

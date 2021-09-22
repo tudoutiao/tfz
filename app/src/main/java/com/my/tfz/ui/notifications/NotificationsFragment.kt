@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.my.tfz.R
 import com.my.tfz.databinding.FragmentNotificationsBinding
+import com.my.tfz.ui.adapter.MessageAppAdapter
 
 class NotificationsFragment : Fragment() {
 
@@ -29,9 +30,16 @@ class NotificationsFragment : Fragment() {
                 ViewModelProvider(this).get(NotificationsViewModel::class.java)
 
         _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        var adapter=MessageAppAdapter()
+        binding.recyclerView.adapter=adapter
+        subscribeUi(adapter, binding)
+        return binding.root
+    }
 
-        return root
+    private fun subscribeUi(adapter: MessageAppAdapter, binding: FragmentNotificationsBinding) {
+        notificationsViewModel.messageList.observe(viewLifecycleOwner,{
+            adapter.submitList(it)
+        })
     }
 
     override fun onDestroyView() {

@@ -4,15 +4,16 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.my.tfz.MainApplication
 import com.my.tfz.bean.AppItemInfo
+import com.my.tfz.bean.MessageBean
 import org.json.JSONObject
 import java.io.ByteArrayOutputStream
 import java.io.InputStream
 
 open class DataUtil {
-     fun getInfoList(): ArrayList<AppItemInfo>? {
+    fun getInfoList(): ArrayList<AppItemInfo>? {
         try {
             val inputStream = MainApplication.context.assets.open("appdata.json")
-            val jsonObject = parseJsonFromInputStream(inputStream)
+            val jsonObject = JSONObject(parseJsonFromInputStream(inputStream))
             if (jsonObject != null) {
                 if (!jsonObject.isNull("data")) {
                     var districts = Gson().fromJson<ArrayList<AppItemInfo>>(
@@ -30,7 +31,29 @@ open class DataUtil {
         return null
     }
 
-    fun parseJsonFromInputStream(inputStream: InputStream): JSONObject? {
+    fun getMessageList(): List<MessageBean>? {
+        try {
+            val inputStream = MainApplication.context.assets.open("message.json")
+            val jsonObject = JSONObject(parseJsonFromInputStream(inputStream))
+            if (jsonObject != null) {
+                if (!jsonObject.isNull("data")) {
+                    var districts = Gson().fromJson<List<MessageBean>>(
+                        jsonObject.optString("data"),
+                        object :
+                            TypeToken<List<MessageBean>>() {
+                        }.type
+                    )
+                    return districts
+                }
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        return null
+    }
+
+
+    fun parseJsonFromInputStream(inputStream: InputStream): String? {
         try {
             val content = ByteArrayOutputStream()
             var readBytes = 0
@@ -46,7 +69,7 @@ open class DataUtil {
             inputStream.close()
             content.close()
             val jsonStr = String(content.toByteArray())
-            return JSONObject(jsonStr)
+            return jsonStr
         } catch (e: Exception) {
             e.printStackTrace()
 
