@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.my.tfz.databinding.FragmentHomeBinding
+import com.my.tfz.ui.adapter.HomeAppAdapter
 
 class HomeFragment : Fragment() {
 
@@ -25,18 +27,19 @@ class HomeFragment : Fragment() {
     ): View? {
         homeViewModel =
             ViewModelProvider(this).get(HomeViewModel::class.java)
-
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-        homeViewModel.appInfoList.observe(viewLifecycleOwner, Observer {
-            binding.girdView
-        })
-//        val textView: TextView = binding.textHome
-//        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-//            textView.text = it
-//        })
+        var adapter =HomeAppAdapter()
+        binding.girdView.adapter=adapter
+//        binding.girdView.addItemDecoration(DividerItemDecoration(activity,DividerItemDecoration.VERTICAL))
+        subscribeUi(adapter, binding)
 
-        return root
+        return binding.root
+    }
+
+    private fun subscribeUi(adapter: HomeAppAdapter, binding: FragmentHomeBinding) {
+        homeViewModel.appInfoList.observe(viewLifecycleOwner, Observer {
+            adapter.submitList(it)
+        })
     }
 
     override fun onDestroyView() {
