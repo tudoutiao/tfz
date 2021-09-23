@@ -32,8 +32,16 @@ class DashboardFragment : Fragment() {
 
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         binding.recyclerView.adapter = adapter
-        binding.alphabetView.setOnTouchLetterChangedListener {
+        binding.alphabetView.setOnTouchLetterChangedListener { s ->
+            var index = -1
+            dashboardViewModel.constactList.value!!.map continuing@ {
+                index++
+                if (it.pinyin!![0].toString().equals(s)) {
+                    binding.recyclerView.scrollToPosition(index)
+                    return@continuing
+                }
 
+            }
         }
         binding.alphabetView.setOnTouchLetterReleasedListener {
 

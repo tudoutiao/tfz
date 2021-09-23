@@ -42,7 +42,7 @@
 
     </androidx.recyclerview.widget.RecyclerView>
 
-    <com.my.tfz.ui.view.AlphabetView
+    <com.my.tfz.ui.view.LetterView
         android:id="@+id/alphabetView"
         android:layout_width="30dp"
         app:layout_constraintTop_toTopOf="@id/recycler_view"
