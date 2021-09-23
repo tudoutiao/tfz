@@ -4,6 +4,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.my.tfz.MainApplication
 import com.my.tfz.bean.AppItemInfo
+import com.my.tfz.bean.ConstactBean
 import com.my.tfz.bean.MessageBean
 import org.json.JSONObject
 import java.io.ByteArrayOutputStream
@@ -41,6 +42,27 @@ open class DataUtil {
                         jsonObject.optString("data"),
                         object :
                             TypeToken<List<MessageBean>>() {
+                        }.type
+                    )
+                    return districts
+                }
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        return null
+    }
+
+    fun getConstactList(): List<ConstactBean>? {
+        try {
+            val inputStream = MainApplication.context.assets.open("constact.json")
+            val jsonObject = JSONObject(parseJsonFromInputStream(inputStream))
+            if (jsonObject != null) {
+                if (!jsonObject.isNull("data")) {
+                    var districts = Gson().fromJson<List<ConstactBean>>(
+                        jsonObject.optString("data"),
+                        object :
+                            TypeToken<List<ConstactBean>>() {
                         }.type
                     )
                     return districts

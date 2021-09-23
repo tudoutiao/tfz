@@ -7,6 +7,4 @@
     <string name="search">搜索</string>
 
     <string name="acitivity_title_login">用户登录</string>
-    <string name="acitivity_title_app">应用</string>
-    <string name="acitivity_title_msg">消息</string>
 </resources>

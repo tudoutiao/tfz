@@ -37,7 +37,7 @@ public class WaterMarkView {
 
     private WaterMarkView() {
         mText = "";
-        mTextColor = 0xa5F2F2F2;
+        mTextColor = 0x12000000;
         mTextSize = 18;
         mRotation = -20;
     }

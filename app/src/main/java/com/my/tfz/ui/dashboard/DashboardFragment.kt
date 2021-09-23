@@ -4,12 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.my.tfz.R
 import com.my.tfz.databinding.FragmentDashboardBinding
+import com.my.tfz.ui.adapter.ConstactAdapter
 
 class DashboardFragment : Fragment() {
 
@@ -19,23 +18,30 @@ class DashboardFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    val adapter: ConstactAdapter by lazy {
+        ConstactAdapter()
+    }
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         dashboardViewModel =
-                ViewModelProvider(this).get(DashboardViewModel::class.java)
+            ViewModelProvider(this).get(DashboardViewModel::class.java)
 
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        binding.recyclerView.adapter = adapter
+        binding.alphabetView.setOnTouchLetterChangedListener {
 
-        val textView: TextView = binding.textDashboard
-        dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
+        }
+        binding.alphabetView.setOnTouchLetterReleasedListener {
+
+        }
+        dashboardViewModel.constactList.observe(viewLifecycleOwner, Observer {
+            adapter.submitList(it)
         })
-        return root
+        return binding.root
     }
 
     override fun onDestroyView() {
