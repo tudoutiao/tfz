@@ -20,8 +20,10 @@
     <EditText
         android:id="@+id/edit_view"
         android:layout_width="match_parent"
-        android:layout_height="38dp"
-        android:layout_margin="10dp"
+        android:layout_height="34dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/bg_corner_white_8"
         android:drawableLeft="@drawable/ic_search"
         android:drawablePadding="5dp"
@@ -31,11 +33,12 @@
         android:textSize="@dimen/font_size_16"
         app:layout_constraintTop_toBottomOf="@+id/title_view"></EditText>
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
         android:background="@color/white"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintTop_toBottomOf="@+id/edit_view">
@@ -45,6 +48,7 @@
     <com.my.tfz.ui.view.LetterView
         android:id="@+id/alphabetView"
         android:layout_width="30dp"
+        android:layout_marginTop="120dp"
         app:layout_constraintTop_toTopOf="@id/recycler_view"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_height="450dp"

@@ -25,7 +25,7 @@
 
     <fragment
         android:id="@+id/navigation_me"
-        android:name="com.my.tfz.ui.notifications.NotificationsFragment"
+        android:name="com.my.tfz.ui.me.MineFragment"
         android:label="@string/title_me"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_mine" />
 </navigation>

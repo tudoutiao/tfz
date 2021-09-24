@@ -23,4 +23,7 @@ class ImageUtil {
         Glide.with(MainApplication.context).load(url)
             .apply(avatarRequestOptions).into(imageView)
     }
+
+
+
 }

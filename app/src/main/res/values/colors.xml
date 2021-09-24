@@ -8,6 +8,7 @@
     <color name="c5E9F69">#5E9F69</color>
     <color name="black">#FF000000</color>
     <color name="c333333">#333333</color>
+    <color name="c7c7c7c">#7c7c7c</color>
     <color name="white">#FFFFFFFF</color>
 
     <color name="c_4C8CF7">#4C8CF7</color>
@@ -15,5 +16,7 @@
     <color name="EFEFF3">#EFEFF3</color>
     <color name="DDDDDD">#DDDDDD</color>
     <color name="c7f7f7f">#477f7f7f</color>
+    <color name="F0F7FB">#F0F7FB</color>
+    <color name="D3EFFC">#D3EFFC</color>
     <color name="c707070">#707070</color>
 </resources>
