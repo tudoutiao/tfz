@@ -1,6 +1,8 @@
 package com.my.tfz.ui.notifications
 
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,11 +23,16 @@ class NotificationsFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+    }
+
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
+        Log.e("onCreateView", this@NotificationsFragment.javaClass.name)
         notificationsViewModel =
                 ViewModelProvider(this).get(NotificationsViewModel::class.java)
 

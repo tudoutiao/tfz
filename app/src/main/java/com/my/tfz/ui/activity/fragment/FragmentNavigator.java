@@ -40,6 +40,7 @@ import androidx.navigation.NavigatorProvider;
 import java.util.ArrayDeque;
 import java.util.Collections;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -133,6 +134,7 @@ public class FragmentNavigator extends Navigator<FragmentNavigator.Destination> 
                 context.getClassLoader(), className);
     }
 
+
     /**
      * {@inheritDoc}
      * <p>
@@ -161,17 +163,24 @@ public class FragmentNavigator extends Navigator<FragmentNavigator.Destination> 
         }
 
         Fragment tempFragment=null;
-        for(int i=0;i<mFragmentManager.getFragments().size()-1;i++){
-            Fragment f=mFragmentManager.getFragments().get(i);
-            if(null!=f&&f.getClass().getName().equals(className)){
-                tempFragment=f;
-                break;
-            }
+        //无效***********
+//        for(int i=0;i<mFragmentManager.getFragments().size()-1;i++){
+//            Fragment f=mFragmentManager.getFragments().get(i);
+//            if(null!=f&&f.getClass().getName().equals(className)){
+//                tempFragment=f;
+//                break;
+//            }
+//        }
+         tempFragment = mFragmentManager.findFragmentByTag(className);
+
+        Fragment frag;
+        if(null==tempFragment){
+            frag = instantiateFragment(mContext, mFragmentManager,
+                    className, args);
+        }else {
+            frag=tempFragment;
         }
 
-
-        final Fragment frag = instantiateFragment(mContext, mFragmentManager,
-                className, args);
         frag.setArguments(args);
         final FragmentTransaction ft = mFragmentManager.beginTransaction();
 
@@ -187,9 +196,14 @@ public class FragmentNavigator extends Navigator<FragmentNavigator.Destination> 
             ft.setCustomAnimations(enterAnim, exitAnim, popEnterAnim, popExitAnim);
         }
 
-
-
-        ft.replace(mContainerId, frag);
+        List<Fragment> fragments = mFragmentManager.getFragments();
+        for (Fragment fragment : fragments) {
+            ft.hide(fragment);
+        }
+        if (!frag.isAdded()) {
+            ft.add(mContainerId, frag, className);
+        }
+        ft.show(frag);
         ft.setPrimaryNavigationFragment(frag);
 
         final @IdRes int destId = destination.getId();
@@ -225,6 +239,7 @@ public class FragmentNavigator extends Navigator<FragmentNavigator.Destination> 
                 ft.addSharedElement(sharedElement.getKey(), sharedElement.getValue());
             }
         }
+
         ft.setReorderingAllowed(true);
         ft.commit();
         // The commit succeeded, update our view of the world
