@@ -5,6 +5,6 @@ import com.my.tfz.ui.view.WaterMarkView
 
 open class BaseActivity : AppCompatActivity() {
     open fun initView() {
-        WaterMarkView.getInstance().show(this, "赵薇：92194")
+        WaterMarkView.getInstance().show(this, "刘雪：92194")
     }
 }
