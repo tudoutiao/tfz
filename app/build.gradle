@@ -59,4 +59,7 @@ dependencies {
     implementation libraries.gson
     implementation libraries.glide
     annotationProcessor libraries.glide_processor
+    implementation libraries.room
+    annotationProcessor libraries.room_processor
+    implementation libraries.room_rxjava
 }

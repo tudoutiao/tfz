@@ -2,7 +2,8 @@ ext.versions = [
         coroutines_version: '1.4.2',
         work_version      : '2.5.0',
         gson_version      : '2.8.2',
-        glide             : '4.12.0'
+        glide             : '4.12.0',
+        room              : '2.3.0',
 ]
 
 ext.libraries = [
@@ -10,5 +11,8 @@ ext.libraries = [
         workmanager    : "androidx.work:work-runtime-ktx:$versions.work_version",
         gson           : "com.google.code.gson:gson:$versions.gson_version",
         glide          : "com.github.bumptech.glide:glide:$versions.glide",
-        glide_processor: "com.github.bumptech.glide:compiler:$versions.glide"
+        glide_processor: "com.github.bumptech.glide:compiler:$versions.glide",
+        room           : "androidx.room:room-runtime:$versions.room",
+        room_processor : "androidx.room:room-compiler:$versions.room",
+        room_rxjava    : "androidx.room:room-rxjava2:$versions.room",
 ]

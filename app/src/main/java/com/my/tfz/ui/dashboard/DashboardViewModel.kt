@@ -4,8 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.my.tfz.MainApplication
 import com.my.tfz.R
 import com.my.tfz.bean.ConstactBean
+import com.my.tfz.room.AppDatabase
+import com.my.tfz.room.ContactsDao
 import com.my.tfz.util.DataUtil
 import kotlinx.coroutines.launch
 import java.util.*

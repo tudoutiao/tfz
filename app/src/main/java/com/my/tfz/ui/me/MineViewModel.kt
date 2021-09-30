@@ -1,5 +1,6 @@
 package com.my.tfz.ui.me
 
+import androidx.databinding.ObservableField
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.my.tfz.R
@@ -7,8 +8,9 @@ import com.my.tfz.bean.SimpleBean
 import com.my.tfz.util.DataUtil
 
 class MineViewModel : ViewModel() {
-    var dataList = MutableLiveData<List<SimpleBean>>()
 
+    var dataList = MutableLiveData<List<SimpleBean>>()
+//    var dataList = ObservableField<List<SimpleBean>>()
     init {
         var result = DataUtil().getMineList()
         result!!.forEach {

@@ -168,7 +168,6 @@ public class FragmentNavigator extends Navigator<FragmentNavigator.Destination> 
 //            Fragment f=mFragmentManager.getFragments().get(i);
 //            if(null!=f&&f.getClass().getName().equals(className)){
 //                tempFragment=f;
-//                break;
 //            }
 //        }
          tempFragment = mFragmentManager.findFragmentByTag(className);
